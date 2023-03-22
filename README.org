@@ -1,12 +1,12 @@
 * Spring 2023 - Lab 08
 
-* Last name:
+* Last name: Cataluna
 
-* First name:
+* First name: Kert Harvey
 
-* GitHub username:
+* GitHub username: Cataluna
 
-* Notes:
+* Notes: 
 
 
   
