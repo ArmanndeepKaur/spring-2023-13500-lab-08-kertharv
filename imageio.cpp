@@ -3,8 +3,6 @@
 #include <cstdlib>
 #include <fstream>
 
-using namespace std;
-
 #include "imageio.h"
 
 
@@ -13,7 +11,7 @@ using namespace std;
 void readImage(std::string filename, int image[MAX_H][MAX_W], int &height, int &width) {
 	char c;
 	int x;
-	ifstream instr;
+	std::ifstream instr;
 	instr.open(filename);
 
 	// read the header P2
@@ -23,7 +21,7 @@ void readImage(std::string filename, int image[MAX_H][MAX_W], int &height, int &
 	assert(c == '2');
 
 	// skip the comments (if any)
-	while ((instr>>ws).peek() == '#') {
+	while ((instr>>std::ws).peek() == '#') {
 		instr.ignore(4096, '\n');
 	}
 
@@ -47,26 +45,25 @@ void readImage(std::string filename, int image[MAX_H][MAX_W], int &height, int &
 // Writes a PGM file
 // Need to provide the array data and the image dimensions
 void writeImage(std::string filename, int image[MAX_H][MAX_W], int height, int width) {
-	ofstream ostr;
+	std::ofstream ostr;
 	ostr.open(filename);
 	if (ostr.fail()) {
-		cout << "Unable to write file\n";
+		std::cout << "Unable to write file\n";
 		exit(1);
 	};
 
 	// print the header
-	ostr << "P2" << endl;
-	// width, height
+	ostr << "P2" << std::endl;
 	ostr << width << ' ';
-	ostr << height << endl;
-	ostr << 255 << endl;
+	ostr << height << std::endl;
+	ostr << 255 << std::endl;
 
 	for (int row = 0; row < height; row++) {
 		for (int col = 0; col < width; col++) {
 			assert(image[row][col] < 256);
 			assert(image[row][col] >= 0);
 			ostr << image[row][col] << ' ';
-			ostr << endl;
+			ostr << std::endl;
 		}
 	}
 	ostr.close();
