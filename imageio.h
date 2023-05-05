@@ -1,3 +1,4 @@
+#include <iostream> 
 #pragma once
 
 const int MAX_H = 512;
